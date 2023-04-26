@@ -1,0 +1,392 @@
+openapi: 3.0.3
+info:
+  title: Airtickets API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: user
+    description: Operations about user
+  - name: ticket
+    description: Ticket operations
+  - name: flight
+    description: Flight operations
+paths:
+  /users:
+    post:
+      tags:
+        - user
+      description: Add new user
+      operationId: addUser
+      requestBody:
+        description: New user information
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: New user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /users/{userId}:
+    get:
+      tags:
+        - user
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Get user by ID.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User with the specified ID was not found.
+    put:
+      tags:
+        - user
+      operationId: updateUserById
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User with the specified ID was not found.
+    delete:
+      tags:
+        - user
+      operationId: deleteUserById
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: User was deleted.
+        '404':
+          description: User not found.
+
+  /tickets:
+    post:
+      tags:
+        - ticket
+      description: Add new ticket
+      operationId: addTicket
+      requestBody:
+        description: Ticket information
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '200':
+          description: New ticket.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+    get:
+      tags:
+        - ticket
+      operationId: getTickets
+      responses:
+        '200':
+          description: A list of tickets.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ticket'
+
+  /tickets/{ticketId}:
+    get:
+      tags:
+        - ticket
+      operationId: getTicketById
+      parameters:
+        - name: ticketId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Ticket by id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+        '404':
+          description: Ticket with specified id not found.
+    put:
+      tags:
+        - ticket
+      operationId: updateTicketById
+      parameters:
+        - name: ticketId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Ticket'
+      responses:
+        '200':
+          description: Ticket was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ticket'
+        '404':
+          description: Ticket with the specified ID was not found.
+    delete:
+      tags:
+        - ticket
+      operationId: deleteTicketById
+      parameters:
+        - name: ticketId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Ticket was deleted.
+        '404':
+          description: Ticket not found.
+  /flights:
+    get:
+      tags:
+        - flight
+      operationId: getFlight
+      responses:
+        '200':
+          description: A list of flights.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flight'
+    post:
+      tags:
+        - flight
+      description: Add new flight
+      operationId: addFlight
+      requestBody:
+        description: Flight information
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Flight'
+      responses:
+        '200':
+          description: New flight.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flight'
+  /flights/{flightId}:
+    get:
+      tags:
+        - flight
+      operationId: getFlightById
+      parameters:
+        - name: flightId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Flight by id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flight'
+        '404':
+          description: Flight with specified id not found.
+    put:
+      tags:
+        - flight
+      operationId: updateFlightById
+      parameters:
+        - name: flightId
+          in: path
+          required: true
+          schema:
+            type: number
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Flight'
+      responses:
+        '200':
+          description: Flight was updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flight'
+        '404':
+          description: Flight with the specified ID was not found.
+    delete:
+      tags:
+        - flight
+      operationId: deleteFlightById
+      parameters:
+        - name: flightId
+          in: path
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Flight was deleted.
+        '404':
+          description: Flight not found.
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - phone
+        - email
+        - dateOfBirth
+        - gender
+        - nationality
+        - documentNo
+        - docExpireDate
+      properties:
+        id:
+          type: number
+          readOnly: true
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        gender:
+          $ref: '#/components/schemas/Gender'
+        nationality:
+          type: string
+        documentNo:
+          type: string
+        docExpireDate:
+          type: string
+          format: date
+    Flight:
+      required:
+        - departureAirport
+        - arrivalAirport
+        - departureDate
+        - arrivalDate
+        - initialPrice
+        - plane
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        departureAirport:
+          type: string
+        arrivalAirport:
+          type: string
+        departureDate:
+          type: string
+          format: date-time
+        arrivalDate:
+          type: string
+          format: date-time
+        initialPrice:
+          type: number
+        plane:
+          $ref: '#/components/schemas/Plane'
+        availableSeats:
+          type: number
+    Ticket:
+      required:
+        - passenger
+        - flight
+        - totalPrice
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        seat:
+          type: string
+        passenger:
+          $ref: '#/components/schemas/User'
+        flight:
+          $ref: '#/components/schemas/Flight'
+        baggage:
+          type: boolean
+        priority:
+          type: boolean
+        totalPrice:
+          type: number
+    Plane:
+      required:
+        - model
+        - seatCount
+        - rowCount
+      type: object
+      properties:
+        id:
+          type: number
+          readOnly: true
+        model:
+          type: string
+        seatCount:
+          type: number
+        rowCount:
+          type: number
+
+    Gender:
+      type: string
+      enum:
+        - "MALE"
+        - "FEMALE"
+        - "OTHER"
+
+
+

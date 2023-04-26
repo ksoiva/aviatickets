@@ -1,0 +1,190 @@
+
+
+
+
+
+
+
+
+
+###  NEW USER REQUEST
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "+380123456789",
+  "email": "john2@mail.com",
+  "dateOfBirth": "2000-03-15",
+  "gender": "MALE",
+  "nationality": "american",
+  "documentNo": "293874762883",
+  "docExpireDate": "2025-10-04"
+}
+
+### GET USER
+GET http://localhost:8080/users/1
+Content-Type: application/json
+
+###  EDIT USER REQUEST
+PUT http://localhost:8080/users/100
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "+380123456789",
+  "email": "john2@mail.com",
+  "dateOfBirth": "2000-03-15",
+  "gender": "MALE",
+  "nationality": "ukrainian",
+  "documentNo": "398472894002",
+  "docExpireDate": "2033-10-04"
+}
+
+### DELETE USER
+DELETE http://localhost:8080/users/100
+Content-Type: application/json
+
+
+
+### ADD FLIGHT
+POST http://localhost:8080/flights
+Content-Type: application/json
+
+{
+  "departureAirport": "MXP",
+  "arrivalAirport": "BGU",
+  "departureDate": "2023-07-10T16:00:00Z",
+  "arrivalDate": "2023-07-11T01:10:00Z",
+  "initialPrice": 7047,
+  "plane": {
+    "id": 3,
+    "model": "Boeing 737-800",
+    "seatCount": 162,
+    "rowCount": 27
+  },
+  "availableSeats": 160
+}
+
+### GET FLIGHT BY ID
+GET http://localhost:8080/flights/6
+Content-Type: application/json
+
+### GET FLIGHTS
+GET http://localhost:8080/flights
+Content-Type: application/json
+
+
+### UPDATE FLIGHT
+PUT http://localhost:8080/flights/101
+Content-Type: application/json
+
+{
+  "departureAirport": "MXP",
+  "arrivalAirport": "BGU",
+  "departureDate": "2023-07-10T16:00:00Z",
+  "arrivalDate": "2023-07-11T01:10:00Z",
+  "initialPrice": 10334,
+  "plane": {
+    "id": 3,
+    "model": "Boeing 737-800",
+    "seatCount": 162,
+    "rowCount": 27
+  },
+  "availableSeats": 145
+}
+
+### DELETE FLIGHT BY ID
+DELETE http://localhost:8080/flights/101
+Content-Type: application/json
+
+
+
+
+### ADD TICKET
+POST http://localhost:8080/tickets
+Content-Type: application/json
+
+{
+  "seat": "3F",
+  "passenger": {
+    "id": 2,
+    "firstName": "Анна",
+    "lastName": "Перч",
+    "phone": "+380964973330",
+    "email": "perch@gmail.com",
+    "dateOfBirth": "2003-12-22",
+    "gender": "FEMALE",
+    "nationality": "ukrainian",
+    "documentNo": "39847729833",
+    "docExpireDate": "2029-01-15"
+  },
+  "flight": {
+    "id": 6,
+    "departureAirport": "WAW",
+    "arrivalAirport": "FCO",
+    "departureDate": "2023-05-10T05:50:00+03:00",
+    "arrivalDate": "2023-05-10T08:15:00+03:00",
+    "initialPrice": 2072.0,
+    "plane": {
+      "id": 4,
+      "model": "Airbus A320",
+      "seatCount": 160,
+      "rowCount": 20
+    },
+    "availableSeats": 159
+  },
+  "baggage": true,
+  "priority": false,
+  "totalPrice": 4005
+}
+
+### GET TICKET BY ID
+GET http://localhost:8080/tickets/7
+Content-Type: application/json
+
+### UPDATE TICKET
+PUT http://localhost:8080/tickets/7
+Content-Type: application/json
+
+{
+  "id": 7,
+  "seat": "4F",
+  "passenger": {
+    "id": 2,
+    "firstName": "Анна",
+    "lastName": "Перч",
+    "phone": "+380964973330",
+    "email": "perch@gmail.com",
+    "dateOfBirth": "2003-12-22",
+    "gender": "FEMALE",
+    "nationality": "american",
+    "documentNo": "39847729833",
+    "docExpireDate": "2029-01-15"
+  },
+  "flight": {
+    "id": 5,
+    "departureAirport": "LGW",
+    "arrivalAirport": "DXB",
+    "departureDate": "2023-04-30T15:25:00+03:00",
+    "arrivalDate": "2023-05-01T03:15:00+03:00",
+    "initialPrice": 13572.0,
+    "plane": {
+      "id": 3,
+      "model": "Boeing 737-800",
+      "seatCount": 162,
+      "rowCount": 27
+    },
+    "availableSeats": 142
+  },
+  "baggage": true,
+  "priority": false,
+  "totalPrice": 16673.0
+}
+
+
+### DELETE TICKET BY ID
+DELETE http://localhost:8080/tickets/102
+Content-Type: application/json
