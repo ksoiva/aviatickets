@@ -1,0 +1,1 @@
+LowCost-Airline system. The Client orders and pays for a flight ticket with taking into account the presence/absence of baggage and the right of priority check-in and boarding (the ticket price is lower than the cost of baggage transportation). As the flight date approaches or the airplane is full, the ticket price should increase.
