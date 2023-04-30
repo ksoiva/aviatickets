@@ -58,7 +58,7 @@ Content-Type: application/json
   "arrivalAirport": "BGU",
   "departureDate": "2023-07-10T16:00:00Z",
   "arrivalDate": "2023-07-11T01:10:00Z",
-  "initialPrice": 7047,
+  "price": 7047,
   "plane": {
     "id": 3,
     "model": "Boeing 737-800",
@@ -86,7 +86,7 @@ Content-Type: application/json
   "arrivalAirport": "BGU",
   "departureDate": "2023-07-10T16:00:00Z",
   "arrivalDate": "2023-07-11T01:10:00Z",
-  "initialPrice": 10334,
+  "price": 10334,
   "plane": {
     "id": 3,
     "model": "Boeing 737-800",

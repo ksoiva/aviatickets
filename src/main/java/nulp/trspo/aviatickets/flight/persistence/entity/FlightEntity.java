@@ -7,7 +7,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +42,9 @@ public class FlightEntity {
     @Column(name = "arrival_date")
     private Timestamp arrivalDate;
     @Column(name = "initial_price")
-    private Float initialPrice;
+    private Float price;
+    @Column(name = "created_date")
+    private Timestamp createdDate;
     @ManyToOne
     @JoinColumn(name = "plane_id", referencedColumnName = "id")
     private PlaneEntity plane;

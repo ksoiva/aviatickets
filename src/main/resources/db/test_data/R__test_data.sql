@@ -1,5 +1,5 @@
 SET CONSTRAINTS ALL DEFERRED;
-TRUNCATE "user", "ticket", "flight", "plane";
+TRUNCATE "ticket", "user", "flight", "plane";
 SET CONSTRAINTS ALL IMMEDIATE;
 
 INSERT INTO "user"(id, first_name, last_name, phone, email, date_of_birth, gender, nationality, document_no, document_expire_date)
@@ -14,10 +14,10 @@ VALUES
     (3, 'Boeing 737-800', 162, 27),
     (4, 'Airbus A320', 160, 20);
 
-INSERT INTO "flight"(id, departure_airport, arrival_airport, departure_date, arrival_date, initial_price, plane_id, available_seats)
+INSERT INTO "flight"(id, departure_airport, arrival_airport, departure_date, arrival_date, initial_price, plane_id, available_seats, created_date)
 VALUES
-    (5, 'LGW', 'DXB', '2023-04-30 15:25:00', '2023-05-01 03:15:00', 13572, 3, 142),
-    (6, 'WAW', 'FCO', '2023-05-10 05:50:00', '2023-05-10 08:15:00', 2072, 4, 159);
+    (5, 'LGW', 'DXB', '2023-04-30 15:25:00', '2023-05-01 03:15:00', 13572, 3, 142, '2023-03-25 10:25:00'),
+    (6, 'WAW', 'FCO', '2023-05-10 05:50:00', '2023-05-10 08:15:00', 2072, 4, 159, '2023-04-04 9:05:00');
 
 INSERT INTO "ticket"(id, seat, user_id, flight_id, baggage, priority, total_price)
 VALUES

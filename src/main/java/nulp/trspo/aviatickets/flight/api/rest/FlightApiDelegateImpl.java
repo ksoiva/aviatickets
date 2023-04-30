@@ -38,9 +38,8 @@ public class FlightApiDelegateImpl implements FlightApiDelegate {
 
     @Override
     public ResponseEntity<FlightDto> getFlightById(BigDecimal flightId) {
-        return flightService.getFlightById(flightId.longValue())
-                .map(flight -> ResponseEntity.ok(flightMapper.flightToFlightDto(flight)))
-                .orElse(ResponseEntity.notFound().build());
+        FlightEntity flightEntity = flightService.getFlightById(flightId.longValue());
+        return ResponseEntity.ok(flightMapper.flightToFlightDto(flightEntity));
     }
 
     @Override

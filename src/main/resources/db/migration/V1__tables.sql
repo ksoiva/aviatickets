@@ -28,7 +28,8 @@ CREATE TABLE "flight" (
                           arrival_date            timestamp NOT NULL,
                           initial_price           float NOT NULL,
                           plane_id                integer NOT NULL REFERENCES "plane"(id) on DELETE CASCADE,
-                          available_seats         integer NOT NULL
+                          available_seats         integer NOT NULL,
+                          created_date            timestamp NOT NULL
 );
 
 CREATE TABLE "ticket" (

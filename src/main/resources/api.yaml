@@ -319,7 +319,7 @@ components:
         - arrivalAirport
         - departureDate
         - arrivalDate
-        - initialPrice
+        - price
         - plane
       type: object
       properties:
@@ -336,7 +336,7 @@ components:
         arrivalDate:
           type: string
           format: date-time
-        initialPrice:
+        price:
           type: number
         plane:
           $ref: '#/components/schemas/Plane'
