@@ -346,7 +346,6 @@ components:
       required:
         - passenger
         - flight
-        - totalPrice
       type: object
       properties:
         id:

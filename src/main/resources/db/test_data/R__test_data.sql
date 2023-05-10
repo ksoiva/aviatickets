@@ -1,5 +1,5 @@
 SET CONSTRAINTS ALL DEFERRED;
-TRUNCATE "ticket", "user", "flight", "plane";
+TRUNCATE ticket, "user", flight, plane;
 SET CONSTRAINTS ALL IMMEDIATE;
 
 INSERT INTO "user"(id, first_name, last_name, phone, email, date_of_birth, gender, nationality, document_no, document_expire_date)
@@ -23,6 +23,5 @@ INSERT INTO "ticket"(id, seat, user_id, flight_id, baggage, priority, total_pric
 VALUES
     (7, '4B', 2, 5, true, false, 15673),
     (8, '1A', 1, 6, false, false, 2072);
-
 
 

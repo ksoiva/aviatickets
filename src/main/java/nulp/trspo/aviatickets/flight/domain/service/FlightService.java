@@ -25,6 +25,7 @@ public class FlightService {
     public List<FlightEntity> getFlights() {
         List<FlightEntity> flightEntities = flightRepository.findAll();
         flightEntities.forEach((this::setCurrentPrice));
+        flightEntities = flightEntities.stream().filter((flight -> !flight.getAvailableSeats().equals(0))).toList();
         return flightEntities;
     }
 
@@ -53,4 +54,9 @@ public class FlightService {
         return flightRepository.save(newFlight);
     }
 
+    public FlightEntity decreaseAvailableSeats(Long flightId){
+        FlightEntity flight = flightRepository.findById(flightId).orElseThrow(()-> new RuntimeException("Flight not found"));
+        flight.setAvailableSeats(flight.getAvailableSeats() - 1);
+        return flightRepository.save(flight);
+    }
 }
