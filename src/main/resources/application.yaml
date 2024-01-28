@@ -41,12 +41,3 @@ management:
   endpoints:
     web:
       base-path: /
-
-spring:
-  config:
-    activate:
-      on-profile: default
-  cloud:
-    aws:
-      secretsmanager:
-        region: eu-central-1
