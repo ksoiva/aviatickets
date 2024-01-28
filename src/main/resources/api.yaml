@@ -4,6 +4,7 @@ info:
   version: 1.0.0
 servers:
   - url: http://localhost:8080
+  - url: http://3.67.132.164:80
 tags:
   - name: user
     description: Operations about user
