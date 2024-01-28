@@ -1,0 +1,43 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.postgresql: INFO
+    org.springframework.data: INFO
+
+spring:
+  mvc:
+    log-request-details: true
+  # Database
+  datasource:
+    url: "jdbc:postgresql://aviatickets.clyiwgg2gyy0.eu-central-1.rds.amazonaws.com:5432/postgres?stringtype=unspecified"
+    username: postgres
+    password: postgres
+
+  # JPA properties
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+
+  # Flyway
+  flyway:
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations: classpath:/db/migration, classpath:/db/test_data
+
+  # Server configuration
+server:
+  port: 8080 #set your port
+
+management:
+  server:
+    port: 8000
+  endpoints:
+    web:
+      base-path: /

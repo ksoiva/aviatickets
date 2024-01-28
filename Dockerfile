@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk as build
 RUN mkdir aviatickets/
 WORKDIR /aviatickets
 
-ARG MAVEN_VERSION=3.9.0
+ARG MAVEN_VERSION=3.9.4
 ARG USER_HOME_DIR="/root"
 ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 ARG JAR_FILE=target/*.jar
@@ -31,7 +31,7 @@ COPY src ./src
 RUN mvn clean package
 
 FROM build as run
-ARG PROFILE
+ARG PROFILE=prod
 
 # copy jar file from build
 COPY --from=build aviatickets/target/*.jar aviatickets.jar
