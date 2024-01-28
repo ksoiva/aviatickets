@@ -10,7 +10,7 @@ spring:
     log-request-details: true
   # Database
   datasource:
-    url: "jdbc:postgresql://localhost:5432/aviatickets?stringtype=unspecified"
+    url: "jdbc:postgresql://aviatickets.clyiwgg2gyy0.eu-central-1.rds.amazonaws.com:5432/postgres?stringtype=unspecified"
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
