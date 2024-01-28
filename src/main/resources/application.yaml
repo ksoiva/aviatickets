@@ -33,7 +33,7 @@ spring:
 
   # Server configuration
 server:
-  port: 8080 #set your port
+  port: 80 #set your port
 
 management:
   server:
@@ -41,3 +41,14 @@ management:
   endpoints:
     web:
       base-path: /
+
+spring:
+  config:
+    activate:
+      on-profile: default
+    import:
+      - aws-secretsmanager:db_pass
+  cloud:
+    aws:
+      secretsmanager:
+        region: eu-central-1
