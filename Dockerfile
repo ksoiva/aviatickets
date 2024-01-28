@@ -31,7 +31,7 @@ COPY src ./src
 RUN mvn clean package
 
 FROM build as run
-ARG PROFILE=prod
+ARG PROFILE
 
 # copy jar file from build
 COPY --from=build aviatickets/target/*.jar aviatickets.jar
